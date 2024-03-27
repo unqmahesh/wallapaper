@@ -17,7 +17,7 @@ const createAuthToken = async (userId, next) => {
     {
 
         const err = new Error()
-        err.status = error.status || 500
+        err.status = error.status || 404
         err.name = error.name || "auth_token_creation_failed"
         err.message = error.message || "Unable to create authentication Token"
 
@@ -31,8 +31,8 @@ const verifyAuthToken = async (authToken, next) => {
 
     try{
 
-        const AUTH_TOKEN_SECRET = process.env.AUTH_TOKEN_SECRET || "authenticationtokenkey"
-
+        const AUTH_TOKEN_SECRET = process.env.AUTH_TOKEN_SECRET || "authtokensecret"
+   
         const payload = jwt.verify(authToken, AUTH_TOKEN_SECRET)
 
         const {userId} = payload

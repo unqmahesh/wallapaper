@@ -5,7 +5,9 @@ import addNewImg from '../controller/global-controller/add-new-img.js'
 
 import signUpUser from '../controller/user-controller/auth-controller/signup-user.js'
 import signInUser from '../controller/user-controller/auth-controller/signin-user.js'
+import getUser from '../controller/user-controller/fetch-controller/get-user.js'
 
+import authorize from '../middleware/authorize.js'
 
 const indexRouter = express.Router()
 
@@ -18,14 +20,18 @@ indexRouter.route('/img/update')//update img
 indexRouter.route('/img/get-img')//get a single img data
 indexRouter.route('/img/get-all-imgs')//get all images 
 
+indexRouter.route('/add-new-img')
+indexRouter.route('/add-existing-img')
+indexRouter.route('/delete-img')
+
 indexRouter.route('/user/signin').post(signInUser)//user signin
 indexRouter.route('/user/signup').post(signUpUser)//user signup
 indexRouter.route('/user/update-img-creations')//update saved imges and update img data of field saves
 indexRouter.route('/user/update-profile')//update user profile
 indexRouter.route('/user/delete-user')//delete user
 
-indexRouter.route('user/get-user')//get a single user
-indexRouter.route('user/get-all-users')//get all users
+indexRouter.route('/user/get-user').get(authorize, getUser)//get a single user
+indexRouter.route('/user/get-all-users')//get all users
 
 
 export default indexRouter

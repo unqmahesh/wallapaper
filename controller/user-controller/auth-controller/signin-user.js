@@ -18,12 +18,10 @@ const signInUser  = async (req, res, next) => {
             data : response.data.data
         }
 
-        if(responseData.success){
         const userId = response.data.data.userId
         await clearCookie(res, next)
         const authToken = await createAuthToken(userId, next)
         await createCookie(res, authToken, next)
-        }
 
         res.status(responseStatus).json(responseData)
 
