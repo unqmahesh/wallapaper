@@ -20,11 +20,11 @@ const addExistingImgApi = async (base64Img, imageId, height, width) => {
 
     }catch(error){
         const err = new Error()
-        err.name = error.name || null
-        err.message = error.message || null
-        err.status = error.status || null
+        err.name = error.response.data.name || null
+        err.message = error.response.data.message || null
+        err.status = error.response.status || null
 
-        next(err)
+        throw err
 
     }
 }

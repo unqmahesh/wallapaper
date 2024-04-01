@@ -32,11 +32,10 @@ const addNewImgApi = async (imageFile, createdBy, aspectRatio, keyWords, height,
     }
     catch(error)
     {
-        console.log(error.message)
         const err = new Error()
-        err.name = error.name || null
-        err.message = error.message || null
-        err.status = error.status || null
+        err.name = error.response.data.name || null
+        err.message = error.response.data.message || null
+        err.status = error.response.status || null
 
         throw err
 

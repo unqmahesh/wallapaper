@@ -8,6 +8,9 @@ import signUpUser from '../controller/user-controller/auth-controller/signup-use
 import signInUser from '../controller/user-controller/auth-controller/signin-user.js'
 import getUser from '../controller/user-controller/fetch-controller/get-user.js'
 
+//image controllers
+import getAllImgs from '../controller/image-controller/get-all-images.js'
+
 //middlewares
 import authorize from '../middleware/authorize.js'
 import { upload } from '../config/multer-config.js'
@@ -22,7 +25,7 @@ indexRouter.route('/health').get((req, res)=>{res.send("Api is healty")})
 indexRouter.route('/img/update')//update img
 
 indexRouter.route('/img/get-img')//get a single img data
-indexRouter.route('/img/get-all-imgs')//get all images 
+indexRouter.route('/img/get-all-imgs').post(getAllImgs)//get all images 
 
 //global routers
 indexRouter.route('/add-new-img').post(upload.single("imageFile"), addNewImg)
