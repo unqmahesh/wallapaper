@@ -1,12 +1,12 @@
 import axios from 'axios'
 
-const getAllImgsApi = async (pageNumber, pageSize) => {
+const getSearchedImgsApi = async (pageNumber, pageSize, searchedWords, aspectRatio) => {
     try{
 
         const BASE_URL = process.env.IMG_SERVER_URL 
-        const FULL_URL = `${BASE_URL}/get-all-imgs`
+        const FULL_URL = `${BASE_URL}/get-searched-imgs`
 
-        const response = await axios.post(FULL_URL, {pageNumber, pageSize}, {withCredentials  : true})
+        const response = await axios.post(FULL_URL, {pageNumber, pageSize, searchedWords, aspectRatio}, {withCredentials  : true})
 
         return response
     }
@@ -21,4 +21,4 @@ const getAllImgsApi = async (pageNumber, pageSize) => {
     }
 }
 
-export default getAllImgsApi
+export default getSearchedImgsApi

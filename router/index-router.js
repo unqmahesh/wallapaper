@@ -10,6 +10,7 @@ import getUser from '../controller/user-controller/fetch-controller/get-user.js'
 
 //image controllers
 import getAllImgs from '../controller/image-controller/get-all-images.js'
+import getSearchedImgs from '../controller/image-controller/get-searched-images.js'
 
 //middlewares
 import authorize from '../middleware/authorize.js'
@@ -26,6 +27,7 @@ indexRouter.route('/img/update')//update img
 
 indexRouter.route('/img/get-img')//get a single img data
 indexRouter.route('/img/get-all-imgs').post(getAllImgs)//get all images 
+indexRouter.route('/img/get-searched-imgs').post(getSearchedImgs)
 
 //global routers
 indexRouter.route('/add-new-img').post(upload.single("imageFile"), addNewImg)
