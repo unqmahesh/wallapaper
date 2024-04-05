@@ -2,6 +2,7 @@ import express from 'express'
 
 //global controllers
 import addNewImg from '../controller/global-controller/add-new-img.js'
+import addExistingImg from '../controller/global-controller/add-existing-img.js'
 
 //user controllers
 import signUpUser from '../controller/user-controller/auth-controller/signup-user.js'
@@ -31,7 +32,7 @@ indexRouter.route('/img/get-searched-imgs').post(getSearchedImgs)
 
 //global routers
 indexRouter.route('/add-new-img').post(upload.single("imageFile"), addNewImg)
-indexRouter.route('/add-existing-img')
+indexRouter.route('/add-existing-img').post(upload.single("imageFile"), addExistingImg)
 indexRouter.route('/delete-img')
 
 //user routers
